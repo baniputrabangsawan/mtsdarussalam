@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTs Darussalam - Madrasah Tsanawiyah</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+     <!-- Font Awesome CDN (versi gratis) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ 
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ekskul.html">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-mosque"></i>
+                <div class="logo-text">
+                    <h1>MTs Darussalam Serui</h1>
+                    <p>Madrasah Tsanawiyah</p>
+                </div>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="ekskul.html">Ekstrakurikuler</a></li>
+                    <li><a href="#registration">Pendaftaran</a></li>
+                    <li><a href="#staff">Tenaga Pendidik</a></li>
+                    <li><a href="Organisation.html">Struktur Organisasi</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Menu</h3>
+            <i class="fas fa-times close-sidebar" id="close-sidebar"></i>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#home"><i class="fas fa-home"></i> Beranda</a></li>
+            <li><a href="#about"><i class="fas fa-info-circle"></i> Tentang Kami</a></li>
+            <li><a href="ekskul.html"><i class="fas fa-info-circle"></i>Ekstrakurikuler</a></li>
+            <li><a href="#registration"><i class="fas fa-user-plus"></i> Pendaftaran</a></li>
+            <li><a href="#staff"><i class="fas fa-users"></i> Tenaga Pendidik</a></li>
+            <li><a href="Organisation.html">Struktur Organisasi</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Kontak</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="carousel" id="carousel">
+                <div class="carousel-slide active" style="background-image: linear-gradient(rgba(45, 90, 61, 0.7), rgba(26, 59, 42, 0.5)), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 800%22><rect fill=%22%2332a852%22 width=%221200%22 height=%22800%22/><path fill=%22%234ade80%22 d=%22M0 400h1200v400H0z%22/><circle fill=%22%2322c55e%22 cx=%22600%22 cy=%22200%22 r=%22150%22/><rect fill=%22%23ffffff%22 x=%22500%22 y=%22300%22 width=%22200%22 height=%22300%22 rx=%2210%22/><polygon fill=%22%23dc2626%22 points=%22450,300 600,200 750,300%22/></svg>');">
+                    <div class="slide-content">
+                        <h2>Selamat Datang di MTs Darussalam</h2>
+                        <p>Membentuk Generasi Islami yang Berkarakter dan Berprestasi</p>
+                        <a href="#registration" class="cta-button">Daftar Sekarang</a>
+                    </div>
+                </div>
+                <div class="carousel-slide" style="background-image: linear-gradient(rgba(45, 90, 61, 0.7), rgba(26, 59, 42, 0.5)), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 800%22><rect fill=%22%2316a34a%22 width=%221200%22 height=%22800%22/><rect fill=%22%234ade80%22 x=%22100%22 y=%22200%22 width=%22300%22 height=%22400%22 rx=%2210%22/><rect fill=%22%234ade80%22 x=%22450%22 y=%22150%22 width=%22300%22 height=%22500%22 rx=%2210%22/><rect fill=%22%234ade80%22 x=%22800%22 y=%22250%22 width=%22300%22 height=%22350%22 rx=%2210%22/></svg>');">
+                    <div class="slide-content">
+                        <h2>Pendidikan Islam Terpadu</h2>
+                        <p>Memadukan Kurikulum Nasional dengan Nilai-nilai Islami</p>
+                        <a href="#about" class="cta-button">Pelajari Lebih Lanjut</a>
+                    </div>
+                </div>
+                <div class="carousel-slide" style="background-image: linear-gradient(rgba(45, 90, 61, 0.7), rgba(26, 59, 42, 0.5)), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 800%22><rect fill=%22%2315803d%22 width=%221200%22 height=%22800%22/><circle fill=%22%2322c55e%22 cx=%22300%22 cy=%22200%22 r=%22100%22/><circle fill=%22%2322c55e%22 cx=%22600%22 cy=%22300%22 r=%22120%22/><circle fill=%22%2322c55e%22 cx=%22900%22 cy=%22200%22 r=%22100%22/><rect fill=%22%23ffffff%22 x=%22200%22 y=%22500%22 width=%22800%22 height=%22200%22 rx=%2220%22/></svg>');">
+                    <div class="slide-content">
+                        <h2>Fasilitas Modern</h2>
+                        <p>Didukung dengan Fasilitas Pendidikan yang Lengkap dan Modern</p>
+                        <a href="#contact" class="cta-button">Hubungi Kami</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <span class="carousel-dot active" data-slide="0"></span>
+                <span class="carousel-dot" data-slide="1"></span>
+                <span class="carousel-dot" data-slide="2"></span>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section about" id="about">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Tentang MTs Darussalam</h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Visi & Misi</h3>
+                        <p><strong>Visi:</strong> Menjadi madrasah tsanawiyah yang unggul dalam prestasi, berkarakter Islami, dan berwawasan global.</p>
+                        <p><strong>Misi:</strong> Menyelenggarakan pendidikan Islam yang berkualitas, membentuk siswa yang beriman, bertakwa, berakhlak mulia, dan mampu bersaing di era global.</p>
+                        <div class="about-features">
+                            <div class="feature-item">
+                                <i class="fas fa-book-quran"></i>
+                                <span>Pendidikan Al-Quran</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Kurikulum Terpadu</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-users"></i>
+                                <span>Guru Berkualitas</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-laptop"></i>
+                                <span>Fasilitas Modern</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <div class="staff-photo">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Section -->
+        <section class="section registration" id="registration">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Pendaftaran Siswa Baru</h2>
+                </div>
+                <div class="registration-content">
+                    <div class="registration-info">
+                        <h3>Jadwal Pendaftaran SPMB 2025</h3>
+                        <div class="registration-groups">
+                            <div class="group-item">
+                                <h4>Gelombang 1</h4>
+                                <p><i class="fas fa-calendar"></i> 9 Juni - 21 Juni 2025</p>
+                            </div>
+                            <div class="group-item">
+                                <h4>Gelombang 2</h4>
+                                <p><i class="fas fa-calendar"></i> 23 Juni - 5 Juli 2025</p>
+                            </div>
+                            <div class="group-item">
+                                <h4>Gelombang 3</h4>
+                                <p><i class="fas fa-calendar"></i> 7 Juli - 12 Juli 2025</p>
+                            </div>
+                        </div>
+                        <p><strong>Catatan:</strong> Daftar sekarang dan dapatkan kesempatan bergabung dengan madrasah terbaik di Yapen!</p>
+                    </div>
+                    <div class="requirements">
+                        <h3>Persyaratan Pendaftaran</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Ijazah SD/MI atau yang sederajat</li>
+                            <li><i class="fas fa-check"></i> Fotocopy Akta Kelahiran</li>
+                            <li><i class="fas fa-check"></i> Fotocopy Kartu Keluarga</li>
+                            <li><i class="fas fa-check"></i> Pas foto 3x4 (4 lembar)</li>
+                            <li><i class="fas fa-check"></i> Surat Keterangan Sehat</li>
+                            <li><i class="fas fa-check"></i> Surat Keterangan Kelakuan Baik</li>
+                            <li><i class="fas fa-check"></i> Fotocopy Kartu Indonesia Pintar (jika ada)</li>
+                            <li><i class="fas fa-check"></i> Mengisi formulir pendaftaran</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Staff Section -->
+        <section class="section staff" id="staff">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Tenaga Pendidik</h2>
+                </div>
+                <div class="staff-grid">
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="staff-info">
+                            <h4>Drs. H. Muchtar</h4>
+                            <p>Kepala Madrasah</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="staff-info">
+                            <h4>Irwan, S.Pd</h4>
+                            <p>Wakil Kepala Madrasah</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="staff-info">
+                            <h4>Marhani, S.Pd</h4>
+                            <p>Guru Matematika</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div class="staff-info">
+                            <h4>Ratna Indrasari, S.Pd</h4>
+                            <p>Guru Bahasa Indonesia</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <i class="fa-solid fa-language"></i>
+                        </div>
+                        <div class="staff-info">
+                            <h4>Fatmawati Rumayomi, S.Hum</h4>
+                            <p>Guru Bahasa Inggris</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="staff-info">
+                            <h4>Marsyanti, S.Hum</h4>
+                            <p>Guru Bahasa Arab</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <i class="fa-solid fa-people-carry-box"></i>
+                        </div>
+                        <div class="staff-info">
+                            <h4>Ardi Amsir Amran S.Pd</h4>
+                            <p>Guru Ilmu Pengetahuan Sosial</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <i class="fa-solid fa-earth-americas"></i>
+                        </div>
+                        <div class="staff-info">
+                            <h4>Nilawati S.Pd</h4>
+                            <p>Guru Ilmu Pengetahuan Alam</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <i class="fa-solid fa-universal-access"></i>
+                        </div>
+                        <div class="staff-info">
+                            <h4>Dinda Salsabila Ramadanti H,SE</h4>
+                            <p>Guru Pendidikan Kewarganegaraan</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <i class="fa-solid fa-volleyball"></i>
+                        </div>
+                        <div class="staff-info">
+                            <h4>Risnawati, S.Pd</h4>
+                            <p>Guru Pendidikan Jasmani, Olahraga, dan Kesehatan</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <div class="staff-info">
+                            <h4>Munzir, S.Pd</h4>
+                            <p>Guru Fiqih</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <i class="fa-solid fa-book-quran"></i>
+                        </div>
+                        <div class="staff-info">
+                            <h4>Marsyanti, S.Hum</h4>
+                            <p>Guru Al Qur'an Hadist</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <i class="fa-solid fa-book"></i>
+                        </div>
+                        <div class="staff-info">
+                            <h4>Reni Iriani S.Pd.I</h4>
+                            <p>Guru Sejarah Kebudayaan Islam</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <i class="fa-solid fa-kaaba"></i>
+                        </div>
+                        <div class="staff-info">
+                            <h4>Irwan, S.Pd</h4>
+                            <p>Guru Akidah Akhlak</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <i class="fa-solid fa-laptop"></i>
+                        </div>
+                        <div class="staff-info">
+                            <h4>Irwan, S.Pd</h4>
+                            <p>Guru Teknologi Informasi dan Komunikasi</p>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="staff-info">
+                            <h4>Febi Almayanti, S.Pd</h4>
+                            <p>Guru Seni dan Budaya</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section contact" id="contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Hubungi Kami</h2>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Informasi Kontak</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <p><strong>Alamat:</strong></p>
+                                <p>Jln. Dr. Samratulangi<br>
+                               Kabupaten Kepulauan Yapen, Yapen Selatan, Serui</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <p><strong>Telepon:</strong></p>
+                                <p>+62 13-8217-5517</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <p><strong>Email:</strong></p>
+                                <p>info@mtsdarussalam.sch.id</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <p><strong>Jam Operasional:</strong></p>
+                                <p>Senin - Jumat: 07:00 - 14:00 WIT<br>
+                                Sabtu: 07:00 - 12:00 WIT</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Kirim Pesan</h3>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Nama Lengkap</label>
+                                <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="Masukkan email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Nomor Telepon</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Masukkan nomor telepon">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Pesan</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Tulis pesan Anda" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Kirim Pesan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 MTs Darussalam. All rights reserved. | Yapen Islands Regency, South Yapen, Serui</p>
+        </div>
+    </footer>
+
+    <script src="script.js">
+    </script>
+</body>
+</html>

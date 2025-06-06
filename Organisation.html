@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madrasah Organizational Structure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(46, 125, 50, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(0deg); }
+            50% { transform: translateX(-50%) translateY(-50%) rotate(180deg); }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .org-chart {
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .level {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            width: 100%;
+            position: relative;
+        }
+
+        .position-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fcf8 100%);
+            border: 2px solid #c8e6c9;
+            border-radius: 15px;
+            padding: 25px 20px;
+            text-align: center;
+            min-width: 200px;
+            max-width: 280px;
+            cursor: grab;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.08);
+        }
+
+        .position-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .position-card:hover::before {
+            left: 100%;
+        }
+
+        .position-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(46, 125, 50, 0.15);
+            border-color: #4caf50;
+        }
+
+        .position-card:active {
+            cursor: grabbing;
+            transform: rotate(5deg) scale(0.98);
+        }
+
+        .position-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2e7d32;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .position-name {
+            font-size: 1rem;
+            color: #555;
+            background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 100%);
+            padding: 8px 15px;
+            border-radius: 25px;
+            margin: 10px 0;
+            border: 1px solid #c8e6c9;
+        }
+
+        .position-description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+            margin-top: 10px;
+        }
+
+        .head-position {
+            background: linear-gradient(145deg, #2e7d32 0%, #388e3c 100%);
+            color: white;
+            border: none;
+            box-shadow: 0 12px 30px rgba(46, 125, 50, 0.3);
+        }
+
+        .head-position .position-title {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .head-position .position-name {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .head-position .position-description {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .connection-line {
+            position: absolute;
+            background: linear-gradient(90deg, #4caf50, #66bb6a);
+            height: 3px;
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+        }
+
+        .vertical-line {
+            position: absolute;
+            background: linear-gradient(180deg, #4caf50, #66bb6a);
+            width: 3px;
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+        }
+
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .control-btn {
+            background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .zoom-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .zoom-btn {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+        }
+
+        .zoom-btn:hover {
+            background: #4caf50;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .level {
+                gap: 20px;
+            }
+            
+            .position-card {
+                min-width: 160px;
+                max-width: 220px;
+                padding: 20px 15px;
+            }
+            
+            .position-title {
+                font-size: 1.1rem;
+            }
+            
+            .controls {
+                position: static;
+                justify-content: center;
+                margin: 20px 0;
+            }
+            
+            .zoom-controls {
+                position: static;
+                flex-direction: row;
+                justify-content: center;
+                margin: 20px 0;
+            }
+        }
+
+        .dragging {
+            opacity: 0.7;
+            z-index: 1000;
+        }
+
+        .drop-zone {
+            border: 2px dashed #4caf50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="orgChart">
+        <div class="header">
+            <h1>Struktur Organisasi Madrasah</h1>
+            <p>MTs Darussalam Serui</p>
+        </div>
+
+        <div class="controls">
+            <button class="control-btn" onclick="resetPositions()">Reset Layout</button>
+            <button class="control-btn" onclick="toggleAnimation()">Toggle Animation</button>
+        </div>
+
+        <div class="org-chart">
+            <!-- Level 1: Head of Madrasah -->
+            <div class="level" id="level1">
+    <div class="position-card head-position" draggable="true" data-position="head">
+        <div class="position-title">Ketua Yayasan</div>
+        <div class="position-name">H. Najamuddin Yusuf</div>
+        <div class="position-description">Kepemimpinan menyeluruh dan arahan strategis institusi</div>
+    </div>
+</div>
+
+<!-- Level 2: Principal -->
+<div class="level" id="level2">
+    <div class="position-card" draggable="true" data-position="principal">
+        <div class="position-title">Kepala Madrasah</div>
+        <div class="position-name">Drs. H. Muchtar</div>
+        <div class="position-description">Kepemimpinan akademik dan manajemen operasional harian</div>
+    </div>
+</div>
+
+<!-- Level 3: Vice Principal and Administrative Staff -->
+<div class="level" id="level3">
+    <div class="position-card" draggable="true" data-position="vice-principal">
+        <div class="position-title">Wakil Kepala Madrasah</div>
+        <div class="position-name">Irwan, S.Pd</div>
+        <div class="position-description">Asisten kepala sekolah, pengawasan kurikulum</div>
+    </div>
+    <div class="position-card" draggable="true" data-position="treasurer">
+        <div class="position-title">Bendahara</div>
+        <div class="position-name">Marsyanti, S.Hum</div>
+        <div class="position-description">Manajemen keuangan dan perencanaan anggaran</div>
+    </div>
+    <div class="position-card" draggable="true" data-position="secretary">
+        <div class="position-title">Sekretaris</div>
+        <div class="position-name">Saldi Ramli, A.Ma</div>
+        <div class="position-description">Koordinasi administrasi dan dokumentasi</div>
+    </div>
+</div>
+
+<!-- Level 4: Department Heads and Specialized Staff -->
+<div class="level" id="level4">
+    <div class="position-card" draggable="true" data-position="bk-teacher">
+        <div class="position-title">Guru BK</div>
+        <div class="position-name">Ustazah Aisha Ibrahim</div>
+        <div class="position-description">Layanan bimbingan dan konseling siswa</div>
+    </div>
+    <div class="position-card" draggable="true" data-position="academic-coordinator">
+        <div class="position-title">Koordinator Akademik</div>
+        <div class="position-name">Ustaz Yusuf Ahmed</div>
+        <div class="position-description">Perencanaan kurikulum dan standar akademik</div>
+    </div>
+    <div class="position-card" draggable="true" data-position="islamic-studies-head">
+        <div class="position-title">Kepala Studi Islam</div>
+        <div class="position-name">Ustaz Ibrahim Malik</div>
+        <div class="position-description">Kurikulum Islam dan program keagamaan</div>
+    </div>
+</div>
+
+<!-- Level 5: Teachers and Support Staff -->
+<div class="level" id="level5">
+    <div class="position-card" draggable="true" data-position="senior-teachers">
+        <div class="position-title">Guru Senior</div>
+        <div class="position-name">Tenaga Pengajar</div>
+        <div class="position-description">Pendidik berpengalaman dan spesialis mata pelajaran</div>
+    </div>
+    <div class="position-card" draggable="true" data-position="librarian">
+        <div class="position-title">Pustakawan</div>
+        <div class="position-name">Sr. Maryam Hassan</div>
+        <div class="position-description">Manajemen perpustakaan dan dukungan penelitian</div>
+    </div>
+    <div class="position-card" draggable="true" data-position="it-coordinator">
+        <div class="position-title">Koordinator IT</div>
+        <div class="position-name">Br. Othman Ali</div>
+        <div class="position-description">Dukungan teknologi dan sumber daya digital</div>
+    </div>
+    <div class="position-card" draggable="true" data-position="facilities-manager">
+        <div class="position-title">Manajer Fasilitas</div>
+        <div class="position-name">Br. Salim Abdullah</div>
+        <div class="position-description">Pemeliharaan dan operasional fasilitas</div>
+    </div>
+</div>
+        </div>
+
+        <div class="zoom-controls">
+            <button class="zoom-btn" onclick="zoomIn()" title="Zoom In">+</button>
+            <button class="zoom-btn" onclick="zoomOut()" title="Zoom Out">−</button>
+        </div>
+    </div>
+
+    <script>
+        let draggedElement = null;
+        let zoomLevel = 1;
+        let animationEnabled = true;
+
+        // Initialize drag and drop functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDragAndDrop();
+            drawConnectionLines();
+        });
+
+        function initializeDragAndDrop() {
+            const cards = document.querySelectorAll('.position-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('dragstart', handleDragStart);
+                card.addEventListener('dragend', handleDragEnd);
+                card.addEventListener('dragover', handleDragOver);
+                card.addEventListener('drop', handleDrop);
+                card.addEventListener('dragenter', handleDragEnter);
+                card.addEventListener('dragleave', handleDragLeave);
+            });
+        }
+
+        function handleDragStart(e) {
+            draggedElement = this;
+            this.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+            document.querySelectorAll('.drop-zone').forEach(el => {
+                el.classList.remove('drop-zone');
+            });
+            draggedElement = null;
+        }
+
+        function handleDragOver(e) {
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+            e.dataTransfer.dropEffect = 'move';
+            return false;
+        }
+
+        function handleDragEnter(e) {
+            if (this !== draggedElement) {
+                this.classList.add('drop-zone');
+            }
+        }
+
+        function handleDragLeave(e) {
+            this.classList.remove('drop-zone');
+        }
+
+        function handleDrop(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            }
+
+            if (draggedElement !== this) {
+                // Swap positions
+                const temp = draggedElement.innerHTML;
+                const tempData = draggedElement.dataset.position;
+                
+                draggedElement.innerHTML = this.innerHTML;
+                draggedElement.dataset.position = this.dataset.position;
+                
+                this.innerHTML = temp;
+                this.dataset.position = tempData;
+                
+                // Add swap animation
+                if (animationEnabled) {
+                    this.style.animation = 'none';
+                    draggedElement.style.animation = 'none';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                        draggedElement.style.animation = '';
+                    }, 100);
+                }
+            }
+            
+            this.classList.remove('drop-zone');
+            return false;
+        }
+
+        function drawConnectionLines() {
+            // Remove existing lines
+            document.querySelectorAll('.connection-line, .vertical-line').forEach(line => {
+                line.remove();
+            });
+
+            // This is a simplified version - in a real implementation,
+            // you'd calculate positions and draw SVG lines between elements
+        }
+
+        function resetPositions() {
+            location.reload();
+        }
+
+        function toggleAnimation() {
+            animationEnabled = !animationEnabled;
+            const container = document.getElementById('orgChart');
+            if (animationEnabled) {
+                container.style.animation = '';
+            } else {
+                container.style.animation = 'none';
+            }
+        }
+
+        function zoomIn() {
+            if (zoomLevel < 1.5) {
+                zoomLevel += 0.1;
+                applyZoom();
+            }
+        }
+
+        function zoomOut() {
+            if (zoomLevel > 0.5) {
+                zoomLevel -= 0.1;
+                applyZoom();
+            }
+        }
+
+        function applyZoom() {
+            const orgChart = document.querySelector('.org-chart');
+            orgChart.style.transform = `scale(${zoomLevel})`;
+            orgChart.style.transformOrigin = 'center top';
+        }
+
+        // Add hover effects and interactions
+        document.querySelectorAll('.position-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                if (animationEnabled && !this.classList.contains('dragging')) {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('dragging')) {
+                    this.style.transform = '';
+                }
+            });
+        });
+
+        // Add click to expand functionality
+        document.querySelectorAll('.position-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (!draggedElement) {
+                    this.classList.toggle('expanded');
+                    // You could add more details here when expanded
+                }
+            });
+        });
+
+        // Responsive handling
+        window.addEventListener('resize', function() {
+            drawConnectionLines();
+        });
+    </script>
+</body>
+</html>
